@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +19,7 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
+
 <body class="font-sans antialiased">
 
     <x-jet-banner />
@@ -34,11 +36,11 @@
             <div class="col-span-7">
                 <!-- Page Heading -->
                 @if (isset($header))
-                <header class="mx-6 mt-6 text-gray-600 shadow bg-blue-50">
-                    <div class="px-4 py-6 wrapper">
-                        {{ $header }}
-                    </div>
-                </header>
+                    <header class="mx-6 mt-6 text-gray-600 shadow bg-blue-50">
+                        <div class="px-4 py-6 wrapper">
+                            {{ $header }}
+                        </div>
+                    </header>
                 @endif
 
                 {{-- Alerts --}}
@@ -65,4 +67,5 @@
 
     @livewireScripts
 </body>
+
 </html>
