@@ -54,13 +54,13 @@
                     <div class="absolute top-0 right-2">
                         <div class="flex space-x-2">
                             @can(App\Policies\ThreadPolicy::UPDATE, $thread)
-                            <x-links.secondary href="{{ route('threads.edit', $thread->slug()) }}">
-                                Edit
-                            </x-links.secondary>
+                                <x-links.secondary href="{{ route('threads.edit', $thread->slug()) }}">
+                                    Edit
+                                </x-links.secondary>
                             @endcan
 
                             @can(App\Policies\ThreadPolicy::DELETE, $thread)
-                            <livewire:thread.delete :thread="$thread" :key="$thread->id()" />
+                                <livewire:thread.delete :thread="$thread" :key="$thread->id()" />
                             @endcan
                         </div>
                     </div>
@@ -71,39 +71,40 @@
             <div class="mt-6 space-y-5">
                 <h2 class="mb-0 text-sm font-bold uppercase">Replies</h2>
                 <hr>
-                @foreach($thread->replies() as $reply)
-                <livewire:reply.update :reply="$reply" :wire:key="$reply->id()" />
+                @foreach ($thread->replies() as $reply)
+                    <livewire:reply.update :reply="$reply" :wire:key="$reply->id()" />
                 @endforeach
             </div>
 
             @auth
-            <div class="p-5 space-y-4 bg-white shadow">
-                <h2 class="text-gray-500">Post a reply</h2>
-                <x-form action="{{ route('replies.store') }}">
-                    <div>
-                        <input type="text" name="body" class="w-full bg-gray-200 border-none shadow-inner focus:ring-blue-400" />
-                        <x-form.error for="body" />
+                <div class="p-5 space-y-4 bg-white shadow">
+                    <h2 class="text-gray-500">Post a reply</h2>
+                    <x-form action="{{ route('replies.store') }}">
+                        <div>
+                            <input type="text" name="body"
+                                class="w-full bg-gray-200 border-none shadow-inner focus:ring-blue-400" />
+                            <x-form.error for="body" />
 
-                        <input type="hidden" name="replyable_id" value="{{ $thread->id() }}">
-                        <x-form.error for="replyable_id" />
-                        <input type="hidden" name="replyable_type" value="threads">
-                        <x-form.error for="replyable_type" />
+                            <input type="hidden" name="replyable_id" value="{{ $thread->id() }}">
+                            <x-form.error for="replyable_id" />
+                            <input type="hidden" name="replyable_type" value="threads">
+                            <x-form.error for="replyable_type" />
 
-                    </div>
+                        </div>
 
-                    <div class="grid mt-4">
-                        {{-- Button --}}
-                        <x-buttons.primary class="justify-self-end">
-                            {{ __('Post') }}
-                        </x-buttons.primary>
-                    </div>
-                </x-form>
-            </div>
+                        <div class="grid mt-4">
+                            {{-- Button --}}
+                            <x-buttons.primary class="justify-self-end">
+                                {{ __('Post') }}
+                            </x-buttons.primary>
+                        </div>
+                    </x-form>
+                </div>
             @else
-            <div class="flex justify-between p-4 text-gray-700 bg-blue-200 rounded">
-                <h2>Please login to leave a comment</h2>
-                <a href="{{ route('login') }}">Login</a>
-            </div>
+                <div class="flex justify-between p-4 text-gray-700 bg-blue-200 rounded">
+                    <h2>Please login to leave a comment</h2>
+                    <a href="{{ route('login') }}">Login</a>
+                </div>
             @endauth
         </section>
     </main>

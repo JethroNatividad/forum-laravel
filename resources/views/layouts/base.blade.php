@@ -17,7 +17,8 @@
         {{ $slot }}
     </div>
 
-    <livewire:scripts />
+    {{-- <livewire:scripts /> --}}
+    @livewireScripts
     @bukScripts(true)
 </body>
 

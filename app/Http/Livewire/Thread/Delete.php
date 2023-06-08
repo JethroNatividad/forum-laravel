@@ -5,18 +5,29 @@ namespace App\Http\Livewire\Thread;
 use Livewire\Component;
 use App\Policies\ThreadPolicy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Log;
 
 class Delete extends Component
 {
     use AuthorizesRequests;
 
     public $thread;
-    public $confirmingThreadDeletion = false;
+    public $confirmingThreadDeletion;
+
+
+
+    public function mount()
+    {
+        $this->confirmingThreadDeletion = false;
+        Log::info('Mounting Delete Thread Component');
+        Log::info('The boolean value is: ' . ($this->confirmingThreadDeletion ? 'true' : 'false'));
+    }
 
     public function confirmThreadDeletion()
     {
         $this->resetErrorBag();
         $this->confirmingThreadDeletion = true;
+
     }
 
     public function deleteThread()

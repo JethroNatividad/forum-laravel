@@ -1,12 +1,12 @@
 <div class="px-2 py-1 text-xs text-gray-500 transition duration-100 bg-red-300 rounded hover:bg-red-400">
 
-    <a wire:click="confirmThreadDeletion" wire:loading.attr="disabled" class="cursor-pointer">
+    <a wire:click="deleteThread" wire:loading.attr="disabled" class="cursor-pointer">
         Delete
     </a>
 
-    <x-jet-dialog-modal wire:model="confirmingThreadDeletion">
+    {{-- <x-jet-confirmation-modal wire:model="confirmingThreadDeletion" wire:init="close">
         <x-slot name="title">
-            {{ __("Delete Thread") }}
+            {{ __('Delete Thread') }}
         </x-slot>
 
         <x-slot name="content">
@@ -15,7 +15,7 @@
 
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$toggle('confirmingThreadDeletion')" wire:loading.attr="disabled">
-                {{ __("Cancel") }}
+                {{ __('Cancel') }}
             </x-jet-secondary-button>
 
             <x-jet-danger-button wire:click="deleteThread" wire:loading.attr="disabled">
@@ -23,5 +23,5 @@
             </x-jet-danger-button>
 
         </x-slot>
-    </x-jet-dialog-modal>
+    </x-jet-confirmation-modal> --}}
 </div>

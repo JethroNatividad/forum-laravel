@@ -29,7 +29,10 @@
     @bukScripts(true)
 
     {{-- Livewire --}}
-    <livewire:scripts />
+    {{-- <livewire:scripts /> --}}
+    @livewireScripts
+
+
 
 </body>
 

@@ -8,9 +8,11 @@ use App\Models\View;
 use App\Models\Reply;
 use App\Models\Views;
 use App\Models\Thread;
+use App\Models\Category;
 use App\Contracts\ViewsContract;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\View as FacadesView;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->bootEloquentMorphsRelations();
+        $categories = Category::all();
+        FacadesView::share('categories', $categories);
     }
 
     public function bootEloquentMorphsRelations()
